@@ -1,7 +1,12 @@
 
 from tkinter import *
+import os
 import tkinter as tk
 from tkinter import Label,messagebox,filedialog
+from procesador_archivos import procesador_archivos
+
+
+
 
 class app:
     def __init__(self, root):
@@ -16,6 +21,7 @@ class app:
         self.root.config(bg="purple")
         self.root.config(bd="30")
         self.root.config(relief="groove")
+        self.manejador= procesador_archivos()
 
 
         self.bt_datos=Button(self.root,text="Datos del estudiante",font=("Comic Sans MS",10),bg="white",fg="black")
@@ -28,6 +34,7 @@ class app:
 
         self.bt_proc = Button(self.root, text="Procesar Archivo", bg="white", fg="black")
         self.bt_proc.grid(row=4, column=2,padx=15)
+        self.bt_proc.config(command= self.procesar_el_archivo)
 
         self.bt_drones = Button(self.root, text="Listado de Drones", bg="white", fg="black")
         self.bt_drones.grid(row=2, column=4,padx=10)
@@ -43,10 +50,22 @@ class app:
         try:
             self.path = filedialog.askopenfilename(filetypes=[("Archivos del aux", "*.xml")])
             if not self.path:
-                raise ValueError("No selecciono ningún archivo.")
+                raise ValueError("Archivo no encontrado.")
             messagebox.showinfo("Aviso", "Archivo cargado exitosamente!")
         except Exception as e:
             messagebox.showerror("Error", str(e))
+
+    def procesar_el_archivo(self):
+        try:
+            if self.path:
+                archivo_n = os.path.basename(self.path)
+                self.manejador.procesar_xml(archivo_n)
+                messagebox.showinfo("Aviso", "Se proceso el archivo.")
+            else:
+                messagebox.showerror("Error", "No se seleccionó ningún archivo.")
+        except Exception as e:
+            messagebox.showerror("Error", str(e))
+
 
 if __name__ == "__main__":
     root = tk.Tk()
