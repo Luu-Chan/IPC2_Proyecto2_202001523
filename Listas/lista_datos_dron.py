@@ -1,6 +1,4 @@
-from nodo_dato_dron import nodo_dato_dron
-
-
+from Listas.nodo_dato_dron import nodo_dato_dron
 
 class lista_dato_dron:
 
@@ -8,16 +6,15 @@ class lista_dato_dron:
         self.primero =None
         self.contador = 0
 
-    def agregar_dron_lista(self,Dato_dron):
+    def agregar_dron(self,Dato_dron):
         if self.primero is None:
-            self.primero = nodo_dato_dron(Dato_dron=Dato_dron)
+            self.primero = nodo_dato_dron(dato_dron=Dato_dron)
             self.contador +=1
             return
-        
         temp = self.primero
         while temp.siguiente:
             temp = temp.siguiente
-        temp.siguiente =  nodo_dato_dron(Dato_dron=Dato_dron)
+        temp.siguiente =  nodo_dato_dron(dato_dron=Dato_dron)
         self.contador += 1
 
     def recorrer_lista(self):

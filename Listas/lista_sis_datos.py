@@ -15,7 +15,7 @@ class lista_sis_datos:
         else:
             actual = self.primero
             anterior = None
-            while actual is not None and (int(actual.valores_sis.altura) < int(nuevo_nodo.valores_sis.altura) or (int(actual.valores_sis.altura) == int(nuevo_nodo.valores_sis.altura) and int(actual.valores_sis.contador) < int(nuevo_nodo.valores_sis.contador))):
+            while actual is not None and (int(actual.valores_sis.altura) < int(nuevo_nodo.valores_sis.altura) | (int(actual.valores_sis.altura) == int(nuevo_nodo.valores_sis.altura) & int(actual.valores_sis.contador) < int(nuevo_nodo.valores_sis.contador))):
                 anterior = actual
                 actual = actual.siguiente
             if anterior is None:
@@ -32,6 +32,6 @@ class lista_sis_datos:
         print("==========================\n")
         temp = self.primero
         while temp:
-            print("Alturas: ", temp.valores_sis.altura, "Letra: ", temp.valores_sis.letra)
+            print("Alturas: ", temp.valores_sis.altura, "Caracter : ", temp.valores_sis.letra)
             temp = temp.siguiente
         print("==========================\n")
