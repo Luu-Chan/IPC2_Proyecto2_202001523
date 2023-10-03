@@ -35,6 +35,7 @@ class app:
 
         self.bt_drones = Button(self.root, text="Listado de Drones", bg="white", fg="black", relief=RAISED)
         self.bt_drones.grid(row=3, column=4,padx=10)
+        self.bt_drones.config(command=self.graph)
 
         self.bt_agregar_d = Button(self.root, text="Agregar Dron", bg="white", fg="black", relief=RAISED)
         self.bt_agregar_d.grid(row=3, column=6,padx=10)
@@ -62,7 +63,10 @@ class app:
                 messagebox.showerror("Error", "No se seleccionó ningún archivo.")
         except Exception as e:
             messagebox.showerror("Error", str(e))
-
+    
+    def graph(self):
+        self.manejador.graficar()
+        print("hola")
 
 if __name__ == "__main__":
     root = tk.Tk()

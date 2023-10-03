@@ -69,3 +69,8 @@ class procesador_archivos:
 
         except Exception as e:
             print("Error", e) 
+
+
+    def graficar(self):
+        print("comando graf")
+        self.lista_temp_drones.graficar()

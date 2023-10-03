@@ -1,4 +1,5 @@
 from Listas.nodo_sis_datos import nodo_sis_datos
+import os
 
 class lista_sis_datos:
 

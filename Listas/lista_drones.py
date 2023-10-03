@@ -1,4 +1,4 @@
-
+import os
 from Listas.nodo_drones import nodo_drones
 
 
@@ -40,8 +40,23 @@ class lista_dron:
             temp = temp.siguiente
         print("======================== \n")
 
+    def graficar(self):
+        actual = self.primero
 
-    def eliminar_drones(self):
+        f = open('bb.dot','w')
+        texto="digraph G {\n node [shape=plaintext];\nlabel=\"Drones\";\nsome_node [\nlabel=<\n<table border=\"0\" cellborder=\"0\" cellspacing=\"0\" width=\"100%\" height=\"100%\">\n"
+        while actual.Dron != None: 
+            
+            texto+= "<td>" +str(actual.Dron) +"</td>" 
+        f.write(texto)
+        f.close()
+        os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
+        os.system(f"dot -Tpng bb.dot -o Sistema_Datos.png")
+        print("graficado")
+    
+
+
+    def delete(self):
         while self.primero:
             temp = self.primero
             self.primero = self.primero.siguiente
