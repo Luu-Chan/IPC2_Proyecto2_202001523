@@ -36,3 +36,10 @@ class lista_sis_datos:
             print("Alturas: ", temp.valores_sis.altura, "Caracter : ", temp.valores_sis.letra)
             temp = temp.siguiente
         print("==========================\n")
+
+    def delete(self):
+        while self.primero:
+            temp = self.primero
+            self.primero = self.primero.siguiente
+            del temp
+            

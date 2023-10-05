@@ -1,4 +1,5 @@
 #from Listas.lista_datos_dron import lista_dato_dron
+import os
 from Listas.lista_drones import lista_dron
 from Listas.lista_datos_dron import lista_dato_dron
 from Listas.Drones import Dron
@@ -61,16 +62,25 @@ class procesador_archivos:
                                     xml_sis_datos.agregar_sis_datos(valores_alturas)
                             contador += 1  
                             lista_temp.agregar_dron(Dato_dron(dron,xml_sis_datos))
-                        print("llenado la segunda")
                         self.lista_temp_dt.agregar_sis_drones(Sis_drones(nombre,altura_max,cantidad,lista_temp))
-                        print("antes de recorrer")
                         lista_temp_altura.recorrer_valores_drones()
                     self.lista_temp_dt.recorrer()
 
         except Exception as e:
             print("Error", e) 
 
-
     def graficar(self):
-        print("comando graf")
-        self.lista_temp_drones.graficar()
+        dot_code = self.lista_temp_drones.generar_dot()
+        print(dot_code)
+        f = open('bb.dot','w')
+
+        f.write(str(dot_code))
+        f.close()
+        os.environ["PATH"] += os.pathsep + 'C:/Program Files/Graphviz/bin'
+        os.system(f"dot -Tpng bb.dot -o Listado_drones.png")
+    
+    def reiniciar(self):
+        self.lista_temp_drones.delete()
+        self.lista_temp_dt.delete()
+        lista_sis_datos.delete()
+        

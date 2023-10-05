@@ -25,3 +25,10 @@ class lista_dato_dron:
             temp.Dato_dron.lista_valores.recorrer_valores_drones()
             temp = temp.siguiente
         print("==============================")
+
+    def delete(self):
+        while self.primero:
+            temp = self.primero
+            self.primero = self.primero.siguiente
+            del temp
+            

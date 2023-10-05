@@ -30,3 +30,9 @@ class lista_sis_drones:
             temp = temp.siguiente
         print("===========================\n")
 
+    def delete(self):
+        while self.primero:
+            temp = self.primero
+            self.primero = self.primero.siguiente
+            del temp
+            
